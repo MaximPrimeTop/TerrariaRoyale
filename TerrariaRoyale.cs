@@ -137,7 +137,9 @@ namespace TerrariaRoyale
                 case "help":
                     GraceHelp(args.Player);
                     break;
-
+                default:
+                    player.SendErrorMessage("Invalid syntax! Check {0}grace help to see available commands", Commands.Specifier);
+                    break;
             }
         }
 
