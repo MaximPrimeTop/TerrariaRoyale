@@ -123,7 +123,7 @@ namespace TerrariaRoyale
                 case "start":
                     if (args.Parameters.Count == 3)
                     {
-                        if (int.TryParse(args.Parameters[1], out grace_time) && int.TryParse(args.Parameters[1], out sudden_death_time))
+                        if (int.TryParse(args.Parameters[1], out grace_time) && int.TryParse(args.Parameters[2], out sudden_death_time))
                             GraceStart();
                         else
                             player.SendErrorMessage("Invalid syntax! Proper syntax: {0}grace start <time in seconds> <time in seconds>", Commands.Specifier);
