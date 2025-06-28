@@ -15,7 +15,7 @@ namespace TerrariaRoyale
     [ApiVersion(2, 1)]
     public class TerrariaRoyale : TerrariaPlugin
     {
-        public static bool PvPEnabled = true;
+        public static bool PvPEnabled = false;
         public enum GameMode
         {
             None,
@@ -30,7 +30,7 @@ namespace TerrariaRoyale
 
         public override string Name => "Terraria Royale";
 
-        public override Version Version => new Version(1, 0, 0, 0);
+        public override Version Version => new Version(1, 0, 0, 1);
 
         public TerrariaRoyale(Main game) : base(game)
         {
@@ -265,6 +265,8 @@ namespace TerrariaRoyale
                 TShock.Utils.Broadcast($"The winner is {winner.Name}!", HexToColor(config.timer_color));
                 Mode = GameMode.None;
                 ServerApi.Hooks.NetGetData.Deregister(this, OnGetData);
+                ServerApi.Hooks.GameUpdate.Deregister(this, OnGameUpdate);
+                PvPEnabled = false;
             }
         }
 
